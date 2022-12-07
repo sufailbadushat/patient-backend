@@ -23,7 +23,7 @@ public class PatientController {
 
         patientDao.save(p);
 
-        return "Employee added successfully!";
+        return "added successfully!";
     }
 
     @CrossOrigin(origins = "*")
