@@ -5,7 +5,9 @@ import com.nest.patient_backend.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -31,6 +33,17 @@ public class PatientController {
     public List<Patient> ViewAllPatient()
     {
         return (List<Patient>)  patientDao.findAll();
+    }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping("/search")
+    public List<Patient> SearchPatient(@RequestBody Patient p)
+    {
+        String patientId=String.valueOf(p.getPatientId());
+        System.out.println(patientId);
+
+        return (List<Patient>) patientDao.SearchPatient(p.getPatientId());
+
     }
 }
 
