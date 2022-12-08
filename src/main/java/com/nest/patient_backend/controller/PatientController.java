@@ -19,13 +19,13 @@ public class PatientController {
 
     @CrossOrigin(origins = "*")
     @PostMapping(path = "add", consumes = "application/json", produces = "application/json")
-    public  String AddPatient(@RequestBody Patient p) {
-
-
+    public Map<String,String> AddPatient(@RequestBody Patient p) {
 
         patientDao.save(p);
 
-        return "added successfully!";
+        HashMap<String,String> hashMap=new HashMap<>();
+        hashMap.put("status","success");
+        return hashMap;
     }
 
     @CrossOrigin(origins = "*")
